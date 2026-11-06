@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Thiệp Cưới Bảo Khang & Thúy Hạnh - 22.06.2025</title>
+    <title>Chương trình cưới xin Nam & Trang - 06.12.2026</title>
 
     <!-- Open Graph / Facebook / Zalo / Messenger Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="zalo Thiệp Cưới Bảo Khang & Thúy Hạnh - 22.06.2025">
+    <meta property="og:title" content="Chương trình cưới xin Nam & Trang - 06.12.2026">
     <meta property="og:description"
         content="Trân trọng kính mời quý khách đến chung vui cùng gia đình chúng tôi trong ngày trọng đại!">
     <meta property="og:image" content="https://res.cloudinary.com/zgtl6d38/image/upload/f_auto/q_auto/thumb.png">
     <meta property="og:image:secure_url"
         content="https://res.cloudinary.com/zgtl6d38/image/upload/f_auto/q_auto/thumb.png">
     <meta property="og:image:type" content="image/png">
-    <meta property="og:image:alt" content="Thiệp Cưới Bảo Khang & Thúy Hạnh">
+    <meta property="og:image:alt" content="Chương trình cưới xin Nam & Trang">
 
     <!-- Twitter Preview -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content=" Twitter Thiệp Cưới Bảo Khang & Thúy Hạnh - 22.06.2025">
+    <meta name="twitter:title" content="Chương trình cưới xin Nam & Trang - 06.12.2026">
     <meta name="twitter:description"
         content="Trân trọng kính mời quý khách đến chung vui cùng gia đình chúng tôi trong ngày trọng đại!">
     <meta name="twitter:image" content="https://res.cloudinary.com/zgtl6d38/image/upload/f_auto/q_auto/thumb.png">
@@ -35,8 +35,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Dancing+Script:wght@600;700&family=Paytone+One&display=swap"
         rel="stylesheet">
-    <!-- Tone.js for gentle wedding chime & music -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 
     <style>
         :root {
@@ -181,6 +179,52 @@
             z-index: 30;
         }
 
+        /* Hand-drawn wavy frame lines + edge florals */
+        .frame-lines {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .frame-lines path {
+            fill: none;
+            stroke: #2b211c;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .deco {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        /* Floating RSVP button: pulsing scale + glow ring to draw attention */
+        @keyframes rsvpPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(200, 75, 49, 0.6), 0 12px 28px rgba(0, 0, 0, 0.45);
+            }
+
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 14px rgba(200, 75, 49, 0), 0 16px 34px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .rsvp-float {
+            animation: rsvpPulse 1.6s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .rsvp-float:hover {
+            animation-play-state: paused;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -199,29 +243,111 @@
 
 <body class="wood-background min-h-screen relative selection:bg-[#7b1e16] selection:text-amber-50">
 
+    <!-- ===== Hand-drawn illustration library (SVG symbols) ===== -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <!-- Tulip (fill = currentColor) -->
+            <symbol id="tulip" viewBox="0 0 40 72">
+                <path d="M20 30 C19 45 21 56 20 70" stroke="#2b211c" stroke-width="1.3" fill="none" />
+                <path d="M20 62 C10 57 5 47 7 38 C14 43 19 51 20 62Z" fill="#8c9c6c" stroke="#2b211c"
+                    stroke-width="1.1" stroke-linejoin="round" />
+                <path d="M20 57 C28 51 33 45 34 36 C27 40 22 47 20 57Z" fill="#a1b07f" stroke="#2b211c"
+                    stroke-width="1.1" stroke-linejoin="round" />
+                <path
+                    d="M10 13 C9 24 13 31 20 31 C27 31 31 24 30 13 C27 17 25 16 23 9 C21 14 19 14 17 9 C15 16 13 16 10 13Z"
+                    fill="currentColor" stroke="#2b211c" stroke-width="1.2" stroke-linejoin="round" />
+                <path d="M20 30 C18 24 18 18 20 12" stroke="#2b211c" stroke-width=".7" fill="none" opacity=".55" />
+            </symbol>
+            <!-- Tulip bud lying sideways -->
+            <symbol id="bud" viewBox="0 0 30 20">
+                <path d="M4 10 C4 4 12 2 18 4 C23 5 27 8 27 10 C27 12 23 15 18 16 C12 18 4 16 4 10Z"
+                    fill="currentColor" stroke="#2b211c" stroke-width="1.1" />
+                <path d="M10 6 C14 9 14 12 10 15" stroke="#2b211c" stroke-width=".7" fill="none" opacity=".55" />
+            </symbol>
+            <!-- Daisy -->
+            <symbol id="daisy" viewBox="0 0 30 64">
+                <path d="M15 20 C14 34 16 48 15 62" stroke="#2b211c" stroke-width="1.2" fill="none" />
+                <path d="M15 48 C9 44 7 38 8 33 C12 36 15 41 15 48Z" fill="#8c9c6c" stroke="#2b211c"
+                    stroke-width="1" />
+                <g fill="#f6eedc" stroke="#2b211c" stroke-width=".9">
+                    <ellipse cx="15" cy="6" rx="2.6" ry="5.5" />
+                    <ellipse cx="15" cy="6" rx="2.6" ry="5.5" transform="rotate(45 15 13)" />
+                    <ellipse cx="15" cy="6" rx="2.6" ry="5.5" transform="rotate(90 15 13)" />
+                    <ellipse cx="15" cy="6" rx="2.6" ry="5.5" transform="rotate(135 15 13)" />
+                    <ellipse cx="15" cy="6" rx="2.6" ry="5.5" transform="rotate(180 15 13)" />
+                    <ellipse cx="15" cy="6" rx="2.6" ry="5.5" transform="rotate(225 15 13)" />
+                    <ellipse cx="15" cy="6" rx="2.6" ry="5.5" transform="rotate(270 15 13)" />
+                    <ellipse cx="15" cy="6" rx="2.6" ry="5.5" transform="rotate(315 15 13)" />
+                </g>
+                <circle cx="15" cy="13" r="3.4" fill="#e1b04a" stroke="#2b211c" stroke-width="1" />
+            </symbol>
+            <!-- Leaf sprig -->
+            <symbol id="sprig" viewBox="0 0 64 30">
+                <path d="M3 26 C20 20 38 13 60 5" stroke="#2b211c" stroke-width="1.2" fill="none" />
+                <g fill="#7f9163" stroke="#2b211c" stroke-width="1">
+                    <path d="M16 21 C14 13 18 8 23 7 C23 13 20 18 16 21Z" />
+                    <path d="M22 19 C28 24 34 24 38 21 C33 17 27 17 22 19Z" />
+                    <path d="M33 14 C31 7 35 3 40 2 C40 8 37 12 33 14Z" />
+                    <path d="M41 12 C46 16 52 16 55 13 C51 9 46 9 41 12Z" />
+                </g>
+            </symbol>
+            <!-- Little yellow buds -->
+            <symbol id="buds" viewBox="0 0 20 50">
+                <path d="M10 48 C9 34 11 20 10 4" stroke="#2b211c" stroke-width="1" fill="none" />
+                <g fill="#e6bf5a" stroke="#2b211c" stroke-width=".8">
+                    <ellipse cx="7" cy="8" rx="2.2" ry="3" />
+                    <ellipse cx="13" cy="13" rx="2.2" ry="3" />
+                    <ellipse cx="7" cy="19" rx="2.2" ry="3" />
+                    <ellipse cx="13" cy="25" rx="2.2" ry="3" />
+                    <ellipse cx="7" cy="31" rx="2.2" ry="3" />
+                </g>
+            </symbol>
+            <!-- Rose head (fill = currentColor) -->
+            <symbol id="rose" viewBox="0 0 24 24">
+                <path d="M12 2 C18 2 22 6 22 12 C22 18 18 22 12 22 C6 22 2 18 2 12 C2 6 6 2 12 2Z"
+                    fill="currentColor" stroke="#2b211c" stroke-width="1.2" />
+                <path d="M12 7 C8.5 7 7 9.5 7.5 12.5 C8 15 10.5 16 12.5 15.2 C14.5 14.4 14.6 11.8 12.8 11.2"
+                    fill="none" stroke="#2b211c" stroke-width="1" stroke-linecap="round" />
+                <path d="M4 10 C6 13 6 16 8 19 M20 10 C18 13 18 16 16 19" fill="none" stroke="#2b211c"
+                    stroke-width=".8" opacity=".6" />
+            </symbol>
+            <!-- Bouquet with ribbon -->
+            <symbol id="bouquet" viewBox="0 0 130 90">
+                <g fill="#86986a" stroke="#2b211c" stroke-width="1.1" stroke-linejoin="round">
+                    <path d="M62 44 C70 24 86 18 98 20 C90 32 78 42 62 44Z" />
+                    <path d="M70 52 C90 50 108 56 118 66 C102 70 84 64 70 52Z" />
+                    <path d="M56 40 C50 24 54 12 62 6 C66 18 64 30 56 40Z" />
+                    <path d="M84 62 C96 72 98 82 96 88 C86 82 82 72 84 62Z" />
+                </g>
+                <use href="#rose" x="50" y="28" width="22" height="22" style="color:#c4463a" />
+                <use href="#rose" x="70" y="20" width="21" height="21" style="color:#e2896b" />
+                <use href="#rose" x="66" y="40" width="23" height="23" style="color:#ad3428" />
+                <use href="#rose" x="88" y="34" width="18" height="18" style="color:#eaa99a" />
+                <use href="#rose" x="46" y="48" width="19" height="19" style="color:#d9673a" />
+                <use href="#rose" x="86" y="52" width="16" height="16" style="color:#e3b54a" />
+                <use href="#rose" x="102" y="44" width="14" height="14" style="color:#c4463a" />
+                <path d="M54 66 C44 58 36 62 42 70 C46 74 51 70 54 66Z" fill="#b5372a" stroke="#2b211c"
+                    stroke-width="1.1" />
+                <path d="M54 66 C62 60 68 66 62 71 C59 73 56 70 54 66Z" fill="#b5372a" stroke="#2b211c"
+                    stroke-width="1.1" />
+                <path d="M54 66 C42 70 26 66 14 74 C8 78 4 76 2 72" fill="none" stroke="#b5372a"
+                    stroke-width="2.6" stroke-linecap="round" />
+                <path d="M54 66 C46 76 34 80 22 86" fill="none" stroke="#b5372a" stroke-width="2.6"
+                    stroke-linecap="round" />
+            </symbol>
+        </defs>
+    </svg>
+
     <!-- Floating Petals & Hearts Background Canvas -->
     <canvas id="petals-canvas"></canvas>
 
     <!-- Top Floating Controls (Visible after opening) -->
     <div id="floating-controls" class="fixed top-4 right-4 z-50 hidden items-center gap-2">
-        <button onclick="replayCover()" title="Xem lại bìa thiệp"
-            class="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#e2d1bc]/90 hover:bg-[#e2d1bc] text-[#2c221e] shadow-lg border border-amber-900/20 text-xs font-semibold transition active:scale-95">
-            <svg class="w-4 h-4 text-[#7b1e16]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button onclick="replayCover()" title="Xem lại bìa thiệp" aria-label="Xem lại bìa thiệp"
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-[#e2d1bc]/90 hover:bg-[#e2d1bc] shadow-lg border border-amber-900/20 transition hover:scale-105 active:scale-95">
+            <svg class="w-5 h-5 text-[#7b1e16]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-            </svg>
-            <span>Bìa thiệp</span>
-        </button>
-        <button id="music-toggle-btn" onclick="toggleBackgroundMelody()" title="Bật/Tắt nhạc"
-            class="flex items-center justify-center w-9 h-9 rounded-full bg-[#7b1e16] text-amber-50 shadow-lg border border-amber-200/30 transition hover:scale-105 active:scale-95">
-            <svg id="music-icon-on" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-            </svg>
-            <svg id="music-icon-off" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
             </svg>
         </button>
     </div>
@@ -237,7 +363,7 @@
             <div
                 class="text-amber-100/80 text-xs sm:text-sm tracking-widest uppercase mb-2 sm:mb-3 flex items-center gap-2 text-center">
                 <span class="inline-block w-6 sm:w-8 h-[1px] bg-amber-200/40"></span>
-                <span>Thiệp Cưới Online • Bảo Khang & Thúy Hạnh</span>
+                <span>Chương Trình Cưới xin</span>
                 <span class="inline-block w-6 sm:w-8 h-[1px] bg-amber-200/40"></span>
             </div>
 
@@ -295,12 +421,12 @@
                         <div class="w-full max-w-[150px] sm:max-w-[240px] md:max-w-[320px] mx-auto">
                             <!-- Polaroid-style frame to match the kraft/vintage look -->
                             <div>
-                                <img src="https://ik.imagekit.io/q8lc7n6b3/icon.png" alt="Bảo Khang &amp; Thúy Hạnh"
+                                <img src="https://ik.imagekit.io/q8lc7n6b3/icon.png" alt="Nam &amp; Trang"
                                     class="w-full h-auto aspect-[4/5] object-cover object-center rounded-[2px] drop-shadow-md"
                                     loading="eager" referrerpolicy="no-referrer" />
                                 <p
                                     class="font-script text-center text-[11px] sm:text-base md:text-xl text-[#7b1e16] mt-1 sm:mt-2 leading-none">
-                                    Bảo Khang &amp; Thúy Hạnh
+                                    Nam &amp; Trang
                                 </p>
                             </div>
                         </div>
@@ -318,7 +444,7 @@
                             </h1>
                             <p
                                 class="font-bold text-[10px] sm:text-sm md:text-xl tracking-wide sm:tracking-wider text-[#2c221e] uppercase">
-                                BẢO KHANG &amp; THÚY HẠNH
+                                Nam &amp; Trang
                             </p>
                         </div>
 
@@ -341,7 +467,7 @@
                             <!-- Date -->
                             <div
                                 class="font-retro text-xs sm:text-xl md:text-3xl tracking-wider sm:tracking-widest text-[#231915] mb-1 sm:mb-2 md:mb-3">
-                                22 . 06 . 2025
+                                06 . 12 . 2026
                             </div>
 
                             <!-- Progress Bar with Heart/Circle Scrubber -->
@@ -353,8 +479,8 @@
                             </div>
                             <div
                                 class="flex justify-between text-[9px] sm:text-xs md:text-sm font-semibold text-[#3b2d26] mt-0.5 sm:mt-1.5">
-                                <span>9:30</span>
-                                <span class="mr-[24%]">17:30</span>
+                                <span></span>
+                                <span class="mr-[24%]"></span>
                             </div>
 
                             <!-- Media Controls Row -->
@@ -440,10 +566,10 @@
 
         <!-- Top Header Banner -->
         <header class="text-center mb-10">
-            <p class="text-amber-200/80 text-xs sm:text-sm uppercase tracking-[0.25em] mb-2">Save The Date • 22.06.2025
+            <p class="text-amber-200/80 text-xs sm:text-sm uppercase tracking-[0.25em] mb-2">Save The Date • 06.12.2026
             </p>
             <h2 class="font-serif-title text-3xl sm:text-5xl text-amber-50 font-bold tracking-wide">
-                Bảo Khang <span class="text-[#d96b52] font-script font-normal">&amp;</span> Thúy Hạnh
+                Nam <span class="text-[#d96b52] font-script font-normal">&amp;</span> Trang
             </h2>
             <div class="w-24 h-[1px] bg-amber-200/40 mx-auto mt-3"></div>
         </header>
@@ -457,54 +583,50 @@
             <article class="kraft-paper relative rounded-lg p-6 sm:p-10 flex flex-col justify-between overflow-hidden">
 
                 <!-- Decorative Wavy Hand-drawn Frame SVG -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 560"
-                    preserveAspectRatio="none">
-                    <!-- Left Wavy Line -->
-                    <path d="M 38 110 Q 18 190 36 270 T 30 430 Q 40 490 95 515" fill="none" stroke="#3b2b20"
-                        stroke-width="1.4" opacity="0.75" />
-                    <!-- Right Wavy Line -->
-                    <path d="M 290 30 Q 375 65 362 150 T 365 310 Q 370 390 350 440" fill="none" stroke="#3b2b20"
-                        stroke-width="1.4" opacity="0.75" />
+                <!-- Hand-drawn wavy frame lines -->
+                <svg class="frame-lines" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M52 3 C66 2 82 3 90 6 C97 10 95 24 96.5 38 C98 52 94.5 62 96.5 76 C98 88 95 96 96 106" />
+                    <path d="M3.5 44 C2 58 5.5 70 3.5 84 C2 98 5.5 110 4.5 122 C4 131 12 136 22 137.5" />
+                </svg>
+                <!-- Edge florals -->
+                <svg class="deco" style="left:1.5%; top:1.2%; width:38%;" viewBox="0 0 170 70" aria-hidden="true">
+                    <use href="#daisy" x="0" y="8" width="22" height="48" transform="rotate(-18 11 30)" />
+                    <use href="#tulip" x="48" y="-2" width="30" height="54" transform="rotate(62 63 25)"
+                        style="color:#c4463a" />
+                    <use href="#bud" x="88" y="22" width="24" height="16" style="color:#cf5a3c" />
+                    <use href="#sprig" x="112" y="0" width="54" height="26" />
+                </svg>
+                <svg class="deco" style="left:1%; top:20%; width:7%;" viewBox="0 0 40 72" aria-hidden="true">
+                    <use href="#tulip" x="0" y="0" width="40" height="72" style="color:#b5372a" />
+                </svg>
+                <svg class="deco" style="right:0.5%; top:50%; width:7%;" viewBox="0 0 40 90" aria-hidden="true">
+                    <use href="#buds" x="14" y="0" width="18" height="44" />
+                    <use href="#tulip" x="0" y="34" width="30" height="54" style="color:#d9673a" />
+                </svg>
+                <svg class="deco" style="right:-1%; bottom:0.5%; width:32%;" viewBox="0 0 130 90" aria-hidden="true">
+                    <use href="#bouquet" x="0" y="0" width="130" height="90" />
                 </svg>
 
-                <!-- Top Left Botanical Tulips Illustration -->
-                <div class="relative z-10 flex justify-between items-start mb-2">
-                    <svg class="w-36 h-20 -mt-2 -ml-2" viewBox="0 0 180 90" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <!-- Stems & Leaves -->
-                        <path d="M18 78 Q35 45 65 30" stroke="#3b2b20" stroke-width="1.8" stroke-linecap="round" />
-                        <path d="M55 22 Q88 18 122 25" stroke="#3b2b20" stroke-width="1.8" stroke-linecap="round" />
-                        <ellipse cx="42" cy="48" rx="12" ry="5" transform="rotate(-30 42 48)" fill="#5c7447"
-                            stroke="#3b2b20" stroke-width="1.5" />
-                        <ellipse cx="85" cy="22" rx="14" ry="5" transform="rotate(10 85 22)" fill="#5c7447"
-                            stroke="#3b2b20" stroke-width="1.5" />
-                        <!-- Red & Orange Tulip Buds -->
-                        <path d="M18 55 C12 45, 24 38, 28 48 C32 38, 42 45, 34 55 Z" fill="#9e2a1f" stroke="#3b2b20"
-                            stroke-width="1.5" />
-                        <path d="M105 16 C100 6, 112 2, 116 10 C120 2, 130 8, 122 18 Z" fill="#d96b43" stroke="#3b2b20"
-                            stroke-width="1.5" />
-                        <!-- Small Daisy -->
-                        <circle cx="52" cy="24" r="4" fill="#e6b35a" stroke="#3b2b20" stroke-width="1.2" />
-                    </svg>
-                    <span class="text-[11px] uppercase tracking-widest text-[#6e5644] font-semibold">Thiệp Báo
-                        Tin</span>
+                <!-- Top row (space kept for the florals) -->
+                <div class="relative z-10 flex justify-end items-start mb-2 min-h-[56px] sm:min-h-[64px]">
+                    <span class="text-[11px] uppercase tracking-widest text-[#6e5644] font-semibold mr-6 sm:mr-4">Chương trình cưới xin</span>
                 </div>
 
                 <!-- Two Families Info -->
                 <div class="relative z-10 grid grid-cols-2 gap-3 text-center my-2 px-1">
                     <div>
                         <p class="text-[11px] sm:text-xs text-[#4a372b] italic">Ông Bà</p>
-                        <p class="text-xs sm:text-sm font-bold text-[#2c221e] uppercase leading-snug mt-0.5">
-                            NGUYỄN NGỌC THIỆN<br>NGÔ THỊ MAI
+                        <p class="text-xs sm:text-sm font-bold text-[#2c221e] uppercase leading-relaxed mt-1.5">
+                            Vũ Văn Đại<br>Phan Thị Hằng
                         </p>
-                        <p class="text-[10px] sm:text-xs text-[#594436] mt-1">Quận Phú Nhuận - TP. HCM</p>
+                        <p class="text-[10px] sm:text-xs text-[#594436] leading-relaxed mt-2">Thôn Yên Bài, Xã Tiến Thắng, TP Hà Nội</p>
                     </div>
                     <div>
                         <p class="text-[11px] sm:text-xs text-[#4a372b] italic">Ông Bà</p>
-                        <p class="text-xs sm:text-sm font-bold text-[#2c221e] uppercase leading-snug mt-0.5">
-                            PHẠM VĂN DŨNG<br>ĐẶNG TUYẾT NHUNG
+                        <p class="text-xs sm:text-sm font-bold text-[#2c221e] uppercase leading-relaxed mt-1.5">
+                            Khổng Văn Cải<br>Ngọ Thị Dung
                         </p>
-                        <p class="text-[10px] sm:text-xs text-[#594436] mt-1">Quận Bình Thạnh - TP. HCM</p>
+                        <p class="text-[10px] sm:text-xs text-[#594436] leading-relaxed mt-2">Thôn Ngọ Xá, Xã Xuân Cẩm, TP Bắc Ninh</p>
                     </div>
                 </div>
 
@@ -513,67 +635,47 @@
                     <p
                         class="text-[11px] sm:text-xs tracking-wider uppercase text-[#3b2d26] font-medium leading-relaxed">
                         TRÂN TRỌNG BÁO TIN<br>
-                        <span class="font-bold">LỄ THÀNH HÔN CỦA CON CHÚNG TÔI</span>
+                        <span class="font-bold">CHƯƠNG TRÌNH CƯỚI XIN CỦA CON CHÚNG TÔI</span>
                     </p>
 
                     <!-- Couple Names in Deep Crimson -->
-                    <div class="my-5 space-y-2">
-                        <div class="flex items-baseline justify-center gap-2">
-                            <h3 class="font-retro text-3xl sm:text-4xl text-[#7b1e16] tracking-wide">
-                                BẢO KHANG
-                            </h3>
-                            <span class="text-[11px] uppercase tracking-wider text-[#594436] font-semibold">Út
-                                nam</span>
-                        </div>
+                    <!-- 3-column grid: [1fr | name | 1fr]. The middle column is as wide as the longer name,
+                         so both tags start at the same x (vertically aligned) while names stay centered. -->
+                    <div class="my-5 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-end gap-y-2">
+                        <h3 class="col-start-2 justify-self-center font-retro text-3xl sm:text-4xl text-[#7b1e16] tracking-wide">
+                            Nam
+                        </h3>
+                        <span class="justify-self-start ml-2 mb-1.5 text-[8px] sm:text-[9px] leading-none uppercase tracking-wider text-[#594436] font-semibold whitespace-nowrap">Cậu út</span>
 
-                        <div class="flex items-center justify-center gap-3 my-1">
+                        <div class="col-span-3 flex items-center justify-center gap-3 my-1">
                             <span class="w-16 h-[1px] bg-[#8c6f5a]"></span>
                             <span class="font-serif-title italic text-2xl text-[#4a372b]">&amp;</span>
                             <span class="w-16 h-[1px] bg-[#8c6f5a]"></span>
                         </div>
 
-                        <div class="flex items-baseline justify-center gap-2">
-                            <h3 class="font-retro text-3xl sm:text-4xl text-[#7b1e16] tracking-wide">
-                                THÚY HẠNH
-                            </h3>
-                            <span class="text-[11px] uppercase tracking-wider text-[#594436] font-semibold">Út nữ</span>
-                        </div>
+                        <h3 class="col-start-2 justify-self-center font-retro text-3xl sm:text-4xl text-[#7b1e16] tracking-wide">
+                            Trang
+                        </h3>
+                        <span class="justify-self-start ml-2 mb-1.5 text-[8px] sm:text-[9px] leading-none uppercase tracking-wider text-[#594436] font-semibold whitespace-nowrap">Trưởng công chúa</span>
                     </div>
 
                     <!-- Ceremony Time Details -->
                     <p class="text-[11px] sm:text-xs uppercase tracking-wider text-[#3b2d26] mt-6 mb-2">
-                        HÔN LỄ ĐƯỢC CỬ HÀNH TẠI TƯ GIA VÀO LÚC
+                        HÔN LỄ ĐƯỢC TỔ CHỨC TẠI TƯ GIA NHÀ TRAI
                     </p>
                     <p class="text-sm sm:text-base font-extrabold text-[#231915] uppercase tracking-wide">
-                        09 GIỜ 00, CHỦ NHẬT
+                        11 GIỜ 00, CHỦ NHẬT
                     </p>
                     <p class="text-base sm:text-lg font-extrabold text-[#7b1e16] uppercase tracking-wider mt-0.5">
-                        NGÀY 22 THÁNG 06 NĂM 2025
+                        NGÀY 06 THÁNG 12 NĂM 2026
                     </p>
                     <p class="text-xs italic text-[#594436] mt-1">
-                        (Nhằm ngày 27 tháng 05 năm Ất Tỵ)
+                        (Nhằm ngày 28 tháng 10 năm Bính Ngọ)
                     </p>
                 </div>
 
-                <!-- Bottom Right Vintage Bouquet Illustration -->
-                <div class="relative z-10 flex justify-end items-end -mb-3 -mr-2">
-                    <svg class="w-36 h-24" viewBox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Ribbon -->
-                        <path d="M25 95 C55 85, 75 95, 105 75" stroke="#9e2a1f" stroke-width="5"
-                            stroke-linecap="round" />
-                        <path d="M40 98 C65 92, 85 100, 112 82" stroke="#c85a32" stroke-width="3"
-                            stroke-linecap="round" />
-                        <!-- Foliage & Flowers -->
-                        <ellipse cx="95" cy="52" rx="14" ry="6" transform="rotate(-35 95 52)" fill="#5c7447"
-                            stroke="#2c221e" stroke-width="1.5" />
-                        <ellipse cx="128" cy="65" rx="14" ry="6" transform="rotate(25 128 65)" fill="#5c7447"
-                            stroke="#2c221e" stroke-width="1.5" />
-                        <circle cx="112" cy="55" r="10" fill="#d96b43" stroke="#2c221e" stroke-width="1.6" />
-                        <circle cx="96" cy="68" r="9" fill="#e6b35a" stroke="#2c221e" stroke-width="1.6" />
-                        <circle cx="126" cy="46" r="8" fill="#9e2a1f" stroke="#2c221e" stroke-width="1.6" />
-                        <circle cx="114" cy="74" r="8" fill="#eab5a8" stroke="#2c221e" stroke-width="1.6" />
-                    </svg>
-                </div>
+                <!-- Space kept for the bottom-right bouquet (drawn absolutely above) -->
+                <div class="relative z-10 h-24 sm:h-28"></div>
 
             </article>
 
@@ -581,10 +683,17 @@
             <article class="kraft-paper relative rounded-lg p-6 sm:p-10 flex flex-col justify-between overflow-hidden">
 
                 <!-- Decorative Wavy Right Border Line -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 560"
-                    preserveAspectRatio="none">
-                    <path d="M 325 25 Q 375 95 360 190 T 355 380 Q 345 495 270 530" fill="none" stroke="#3b2b20"
-                        stroke-width="1.4" opacity="0.75" />
+                <svg class="frame-lines" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M97 40 C95.5 56 98 66 96.5 78 C95 92 98 102 96.5 114 C95.5 126 96.5 133 94 136 C92 138 89 138.8 85 139" />
+                </svg>
+                <!-- Top-right edge florals -->
+                <svg class="deco" style="right:1%; top:1.5%; width:16%;" viewBox="0 0 110 170" aria-hidden="true">
+                    <use href="#sprig" x="0" y="0" width="42" height="20" transform="rotate(-8 21 10)" />
+                    <use href="#bud" x="12" y="30" width="20" height="14" style="color:#c4463a" />
+                    <use href="#tulip" x="34" y="10" width="34" height="62" transform="rotate(-58 51 41)"
+                        style="color:#c4463a" />
+                    <use href="#daisy" x="78" y="46" width="24" height="52" />
+                    <use href="#tulip" x="70" y="104" width="34" height="62" style="color:#b5372a" />
                 </svg>
 
                 <!-- Top Guest Invitation -->
@@ -600,49 +709,85 @@
                     </p>
                 </div>
 
-                <!-- Restaurant Venue Details: GRAND PLACE -->
-                <div class="relative z-10 text-center my-4 py-3 px-2 border-y border-[#8c6f5a]/30">
-                    <p class="text-[11px] sm:text-xs uppercase tracking-widest text-[#3b2d26] font-semibold mb-1">
-                        TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI
-                    </p>
-                    <div class="flex flex-wrap items-baseline justify-center gap-2 my-1">
-                        <h3 class="font-serif-title font-bold text-3xl sm:text-4xl text-[#7b1e16] tracking-wide">
-                            Grand Place
-                        </h3>
-                        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2c221e]">
-                            - SẢNH VENUS
-                        </span>
+                <!-- Venue Details: 2 columns — Nhà Trai | Nhà Gái -->
+                <div class="relative z-10 grid grid-cols-2 my-4 py-3 border-y border-[#8c6f5a]/30 text-center">
+                    <!-- Nhà Trai -->
+                    <div class="px-1.5 sm:px-3 border-r border-[#8c6f5a]/40 flex flex-col items-center">
+                        <p class="text-[11px] sm:text-xs uppercase tracking-widest text-[#7b1e16] font-bold">
+                            TƯ GIA NHÀ TRAI
+                        </p>
+                        <p class="text-[10px] sm:text-[11px] text-[#4a372b] mt-1.5 leading-snug">
+                            <span class="block italic">Ông Bà</span>
+                            <span class="block font-bold uppercase text-[#2c221e] mt-0.5">Vũ Văn Đại<br>Phan Thị Hằng</span>
+                        </p>
+                        <p class="text-[11px] sm:text-xs text-[#2c221e] font-medium mt-1.5 mb-2.5 leading-snug">
+                            Xóm 1, Thôn Yên Bài, Xã Tiến Thắng, TP. Hà Nội
+                        </p>
+                        <a href="https://maps.app.goo.gl/DvFok9udYC3F36xg8"
+                            target="_blank" rel="noopener noreferrer"
+                            class="mt-auto inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-full bg-[#7b1e16] hover:bg-[#5e150f] text-amber-50 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider shadow transition active:scale-95">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Chỉ đường</span>
+                        </a>
                     </div>
-                    <p class="text-xs sm:text-sm text-[#2c221e] font-medium mt-1">
-                        142/18 Đ. Cộng Hòa, P.4, Q. Tân Bình, TP. Hồ Chí Minh
-                    </p>
+                    <!-- Nhà Gái -->
+                    <div class="px-1.5 sm:px-3 flex flex-col items-center">
+                        <p class="text-[11px] sm:text-xs uppercase tracking-widest text-[#7b1e16] font-bold">
+                            TƯ GIA NHÀ GÁI
+                        </p>
+                        <p class="text-[10px] sm:text-[11px] text-[#4a372b] mt-1.5 leading-snug">
+                            <span class="block italic">Ông Bà</span>
+                            <span class="block font-bold uppercase text-[#2c221e] mt-0.5">Khổng Văn Cải<br>Ngọ Thị Dung</span>
+                        </p>
+                        <p class="text-[11px] sm:text-xs text-[#2c221e] font-medium mt-1.5 mb-2.5 leading-snug">
+                            Thôn Ngọ Xá, Xã Xuân Cẩm, TP Bắc Ninh
+                        </p>
+                        <a href="https://maps.app.goo.gl/pEM7yyeZ5Xn4yvfw5"
+                            target="_blank" rel="noopener noreferrer"
+                            class="mt-auto inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-full bg-[#7b1e16] hover:bg-[#5e150f] text-amber-50 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider shadow transition active:scale-95">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Chỉ đường</span>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Event Date & Time Grid -->
-                <div class="relative z-10 text-center my-2">
-                    <p class="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2c221e] mb-2">
-                        VÀO LÚC 18 GIỜ 00
+                <div class="relative z-10 text-center my-6 sm:my-8">
+                    <p class="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2c221e] mb-4 sm:mb-5">
+                        VÀO LÚC 16 GIỜ 00
                     </p>
 
-                    <div class="flex items-center justify-center gap-3 sm:gap-5 my-2">
+                    <!-- [1fr | day | 1fr] keeps the red day number exactly in the middle;
+                         lining-nums stops Cormorant's old-style digits from sitting low -->
+                    <div class="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 sm:gap-5 my-2">
                         <div
-                            class="border-y border-[#4a372b] py-1 px-2 text-xs sm:text-sm font-bold uppercase text-[#2c221e]">
-                            CHỦ NHẬT
+                            class="justify-self-end border-y border-[#4a372b] py-1 px-2 text-xs sm:text-sm font-bold uppercase text-[#2c221e] whitespace-nowrap">
+                            THỨ BẢY
                         </div>
-                        <div class="font-serif-title font-bold text-4xl sm:text-5xl text-[#7b1e16] leading-none">
-                            22
+                        <div class="font-serif-title font-bold text-4xl sm:text-5xl text-[#7b1e16] leading-none [font-variant-numeric:lining-nums]">
+                            05
                         </div>
                         <div
-                            class="border-y border-[#4a372b] py-1 px-2 text-xs sm:text-sm font-bold uppercase text-[#2c221e]">
-                            THÁNG 06
+                            class="justify-self-start border-y border-[#4a372b] py-1 px-2 text-xs sm:text-sm font-bold uppercase text-[#2c221e] whitespace-nowrap">
+                            THÁNG 12
                         </div>
                     </div>
 
-                    <p class="font-bold text-base sm:text-lg text-[#2c221e] tracking-widest">
-                        2025
+                    <p class="font-bold text-base sm:text-lg text-[#2c221e] tracking-widest mt-4 sm:mt-5">
+                        2026
                     </p>
-                    <p class="text-[11px] italic text-[#594436] mt-0.5">
-                        (Nhằm ngày 27 tháng 05 năm Ất Tỵ)
+                    <p class="text-[11px] italic text-[#594436] mt-2">
+                        (Nhằm ngày 27 tháng 10 năm Bính Ngọ)
                     </p>
                 </div>
 
@@ -664,204 +809,18 @@
                         </div>
                     </div>
 
-                    <!-- Right: Honor Text + 18:00 & 19:00 Icons -->
-                    <div class="col-span-7 flex flex-col justify-between space-y-3">
+                    <!-- Right: Honor Text -->
+                    <div class="col-span-7 flex flex-col justify-center">
                         <p
                             class="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#3b2d26] text-center font-medium leading-relaxed">
                             SỰ HIỆN DIỆN CỦA QUÝ KHÁCH<br>LÀ NIỀM VINH HẠNH<br>CHO GIA ĐÌNH CHÚNG TÔI
                         </p>
-
-                        <!-- 18:00 Đón Khách & 19:00 Khai Tiệc -->
-                        <div class="flex items-center justify-around pt-1">
-                            <!-- Đón khách -->
-                            <div class="flex items-center gap-1.5">
-                                <svg class="w-6 h-6 text-[#2c221e]" fill="none" stroke="currentColor" stroke-width="1.6"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                    <circle cx="12" cy="13" r="3" />
-                                </svg>
-                                <div class="text-left">
-                                    <p class="text-[9px] uppercase font-bold text-[#4a372b]">ĐÓN KHÁCH</p>
-                                    <p class="text-xs font-extrabold text-[#7b1e16]">18:00</p>
-                                </div>
-                            </div>
-
-                            <div class="h-6 w-[1px] bg-[#8c6f5a]/50"></div>
-
-                            <!-- Khai tiệc -->
-                            <div class="flex items-center gap-1.5">
-                                <svg class="w-6 h-6 text-[#2c221e]" fill="none" stroke="currentColor" stroke-width="1.6"
-                                    viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="6" />
-                                    <path stroke-linecap="round" d="M3 6v12M6 6v5M18 6v12" />
-                                </svg>
-                                <div class="text-left">
-                                    <p class="text-[9px] uppercase font-bold text-[#4a372b]">KHAI TIỆC</p>
-                                    <p class="text-xs font-extrabold text-[#7b1e16]">19:00</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
 
             </article>
 
-        </section>
-
-        <!-- ======================================================== -->
-        <!-- SECTION B: ĐỊA CHỈ NHÀ TRAI, NHÀ GÁI & NHÀ HÀNG (MAPS)    -->
-        <!-- ======================================================== -->
-        <section class="mb-16">
-            <div class="text-center mb-8">
-                <span class="text-amber-200/80 text-xs uppercase tracking-[0.25em]">Locations &amp; Directions</span>
-                <h3 class="font-serif-title text-3xl sm:text-4xl text-amber-50 font-bold mt-1">
-                    Địa Điểm Tổ Chức
-                </h3>
-                <p class="text-amber-100/70 text-xs sm:text-sm mt-1">
-                    Thông tin địa chỉ Tư Gia Nhà Trai, Nhà Gái và Trung Tâm Tiệc Cưới
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                <!-- 1. Địa chỉ Nhà Trai -->
-                <div
-                    class="kraft-paper rounded-xl p-6 flex flex-col justify-between text-center relative overflow-hidden">
-                    <div>
-                        <div
-                            class="w-12 h-12 rounded-full bg-[#7b1e16]/10 border border-[#7b1e16]/30 flex items-center justify-center mx-auto mb-3 text-[#7b1e16]">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                        </div>
-                        <span
-                            class="text-[11px] font-bold uppercase tracking-widest text-[#7b1e16] bg-[#7b1e16]/10 px-3 py-1 rounded-full">
-                            Tư Gia Nhà Trai
-                        </span>
-                        <h4 class="font-bold text-lg text-[#2c221e] mt-3 uppercase">
-                            Gia Đình Chú Rể Bảo Khang
-                        </h4>
-                        <p class="text-xs text-[#4a372b] mt-1">
-                            Ông Bà: <strong>Nguyễn Ngọc Thiện - Ngô Thị Mai</strong>
-                        </p>
-                        <div class="my-4 py-3 px-3 rounded-lg bg-[#d5c0a7]/60 border border-[#8c6f5a]/30">
-                            <p class="text-xs sm:text-sm font-semibold text-[#231915]">
-                                Quận Phú Nhuận, TP. Hồ Chí Minh
-                            </p>
-                            <p class="text-xs text-[#594436] mt-1">
-                                Lễ Thành Hôn: <strong>09:00 - Chủ Nhật, 22/06/2025</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <a href="https://www.google.com/maps/search/?api=1&query=Quan+Phu+Nhuan+TP+HCM" target="_blank"
-                        rel="noopener noreferrer"
-                        class="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-[#4a3528] hover:bg-[#2c221e] text-amber-50 text-xs font-semibold uppercase tracking-wider transition shadow">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>Chỉ đường Nhà Trai</span>
-                    </a>
-                </div>
-
-                <!-- 2. Địa chỉ Nhà Gái -->
-                <div
-                    class="kraft-paper rounded-xl p-6 flex flex-col justify-between text-center relative overflow-hidden">
-                    <div>
-                        <div
-                            class="w-12 h-12 rounded-full bg-[#7b1e16]/10 border border-[#7b1e16]/30 flex items-center justify-center mx-auto mb-3 text-[#7b1e16]">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-                        </div>
-                        <span
-                            class="text-[11px] font-bold uppercase tracking-widest text-[#7b1e16] bg-[#7b1e16]/10 px-3 py-1 rounded-full">
-                            Tư Gia Nhà Gái
-                        </span>
-                        <h4 class="font-bold text-lg text-[#2c221e] mt-3 uppercase">
-                            Gia Đình Cô Dâu Thúy Hạnh
-                        </h4>
-                        <p class="text-xs text-[#4a372b] mt-1">
-                            Ông Bà: <strong>Phạm Văn Dũng - Đặng Tuyết Nhung</strong>
-                        </p>
-                        <div class="my-4 py-3 px-3 rounded-lg bg-[#d5c0a7]/60 border border-[#8c6f5a]/30">
-                            <p class="text-xs sm:text-sm font-semibold text-[#231915]">
-                                Quận Bình Thạnh, TP. Hồ Chí Minh
-                            </p>
-                            <p class="text-xs text-[#594436] mt-1">
-                                Lễ Vu Quy: <strong>Chủ Nhật, 22/06/2025</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <a href="https://www.google.com/maps/search/?api=1&query=Quan+Binh+Thanh+TP+HCM" target="_blank"
-                        rel="noopener noreferrer"
-                        class="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-[#4a3528] hover:bg-[#2c221e] text-amber-50 text-xs font-semibold uppercase tracking-wider transition shadow">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>Chỉ đường Nhà Gái</span>
-                    </a>
-                </div>
-
-                <!-- 3. Trung Tâm Tiệc Cưới Grand Place -->
-                <div
-                    class="kraft-paper rounded-xl p-6 flex flex-col justify-between text-center relative overflow-hidden ring-2 ring-[#7b1e16]/50">
-                    <div>
-                        <div
-                            class="w-12 h-12 rounded-full bg-[#7b1e16] text-amber-50 flex items-center justify-center mx-auto mb-3 shadow">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
-                        </div>
-                        <span
-                            class="text-[11px] font-bold uppercase tracking-widest text-amber-50 bg-[#7b1e16] px-3 py-1 rounded-full">
-                            Tiệc Cưới Chính • Sảnh Venus
-                        </span>
-                        <h4 class="font-serif-title font-bold text-2xl text-[#7b1e16] mt-3">
-                            TT Hội Nghị Grand Place
-                        </h4>
-                        <p class="text-xs text-[#4a372b] mt-1">
-                            Đón khách: <strong>18:00</strong> • Khai tiệc: <strong>19:00</strong>
-                        </p>
-                        <div class="my-4 py-3 px-3 rounded-lg bg-[#d5c0a7]/60 border border-[#8c6f5a]/30">
-                            <p class="text-xs sm:text-sm font-semibold text-[#231915]">
-                                142/18 Đ. Cộng Hòa, P.4, Q. Tân Bình, TP. HCM
-                            </p>
-                            <p class="text-xs text-[#594436] mt-1">
-                                Chủ Nhật, <strong>22/06/2025</strong> (27/05 Ất Tỵ)
-                            </p>
-                        </div>
-                    </div>
-
-                    <a href="https://www.google.com/maps/search/?api=1&query=Grand+Place+142/18+Cong+Hoa+Tan+Binh+TP+HCM"
-                        target="_blank" rel="noopener noreferrer"
-                        class="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-[#7b1e16] hover:bg-[#5e150f] text-amber-50 text-xs font-semibold uppercase tracking-wider transition shadow">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>Bản đồ Grand Place</span>
-                    </a>
-                </div>
-
-            </div>
         </section>
 
         <!-- ======================================================== -->
@@ -881,44 +840,44 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-                <!-- 1. QR Chú Rể (Bảo Khang) -->
+                <!-- 1. QR Chú Rể (Nam) -->
                 <div class="kraft-paper rounded-xl p-6 sm:p-8 text-center flex flex-col items-center justify-between">
                     <div class="w-full">
                         <span
                             class="inline-block text-[11px] font-bold uppercase tracking-widest text-[#7b1e16] bg-[#7b1e16]/10 px-3 py-1 rounded-full mb-2">
                             Mừng Cưới Nhà Trai
                         </span>
-                        <h4 class="font-retro text-2xl text-[#2c221e] uppercase">
-                            Chú Rể Bảo Khang
+                          <h4 class="font-retro text-2xl text-[#7b1e16] uppercase">
+                            Chú Rể Nam
                         </h4>
 
                         <!-- VietQR Image Frame -->
                         <div
                             class="bg-white p-3.5 rounded-xl shadow-md border-2 border-[#8c6f5a]/40 w-52 h-52 mx-auto my-4 flex items-center justify-center">
-                            <img src="https://img.vietqr.io/image/VCB-1029384756-compact2.png?amount=0&addInfo=Mung%20cuoi%20Bao%20Khang%20Thuy%20Hanh&accountName=NGUYEN%20BAO%20KHANG"
-                                alt="QR Ngân Hàng Chú Rể Bảo Khang" class="w-full h-full object-contain rounded"
-                                onerror="this.src='https://placehold.co/220x220/ffffff/7b1e16?text=QR+BAO+KHANG'" />
+                            <img src="https://res.cloudinary.com/yf4nlyts/image/upload/f_auto/q_auto/qrnam.png"
+                                alt="QR Ngân Hàng Chú Rể Nam" class="w-full h-full object-contain rounded"
+                                />
                         </div>
 
                         <div
                             class="bg-[#d5c0a7]/60 rounded-lg p-3.5 border border-[#8c6f5a]/30 text-left space-y-1.5 text-xs sm:text-sm mb-4">
                             <div class="flex justify-between">
                                 <span class="text-[#594436]">Ngân hàng:</span>
-                                <span class="font-bold text-[#231915]">Vietcombank (VCB)</span>
+                                <span class="font-bold text-[#231915]">MBBANK (MB)</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-[#594436]">Chủ tài khoản:</span>
-                                <span class="font-bold text-[#231915] uppercase">NGUYỄN BẢO KHANG</span>
+                                <span class="font-bold text-[#231915] uppercase">Vũ Văn Nam</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-[#594436]">Số tài khoản:</span>
                                 <span id="groom-acc-num"
-                                    class="font-mono font-extrabold text-base text-[#7b1e16]">1029384756</span>
+                                    class="font-mono font-extrabold text-base text-[#7b1e16]">0394744534</span>
                             </div>
                         </div>
                     </div>
 
-                    <button onclick="copyAccount('1029384756', 'Đã sao chép STK Chú Rể Bảo Khang!')"
+                    <button onclick="copyAccount('0394744534', 'Đã sao chép STK Chú Rể Nam!')"
                         class="w-full py-2.5 px-4 rounded-lg bg-[#4a3528] hover:bg-[#2c221e] text-amber-50 text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition active:scale-95 shadow">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -928,7 +887,7 @@
                     </button>
                 </div>
 
-                <!-- 2. QR Cô Dâu (Thúy Hạnh) -->
+                <!-- 2. QR Cô Dâu (Trang) -->
                 <div class="kraft-paper rounded-xl p-6 sm:p-8 text-center flex flex-col items-center justify-between">
                     <div class="w-full">
                         <span
@@ -936,36 +895,36 @@
                             Mừng Cưới Nhà Gái
                         </span>
                         <h4 class="font-retro text-2xl text-[#7b1e16] uppercase">
-                            Cô Dâu Thúy Hạnh
+                            Cô Dâu Trang
                         </h4>
 
                         <!-- VietQR Image Frame -->
                         <div
                             class="bg-white p-3.5 rounded-xl shadow-md border-2 border-[#8c6f5a]/40 w-52 h-52 mx-auto my-4 flex items-center justify-center">
-                            <img src="https://img.vietqr.io/image/TCB-19038475612-compact2.png?amount=0&addInfo=Mung%20cuoi%20Bao%20Khang%20Thuy%20Hanh&accountName=PHAM%20THUY%20HANH"
-                                alt="QR Ngân Hàng Cô Dâu Thúy Hạnh" class="w-full h-full object-contain rounded"
-                                onerror="this.src='https://placehold.co/220x220/ffffff/7b1e16?text=QR+THUY+HANH'" />
+                            <img src="https://res.cloudinary.com/yf4nlyts/image/upload/f_auto/q_auto/qrtrang.png"
+                                alt="QR Ngân Hàng Cô Dâu Trang" class="w-full h-full object-contain rounded"
+                               />
                         </div>
 
                         <div
                             class="bg-[#d5c0a7]/60 rounded-lg p-3.5 border border-[#8c6f5a]/30 text-left space-y-1.5 text-xs sm:text-sm mb-4">
                             <div class="flex justify-between">
                                 <span class="text-[#594436]">Ngân hàng:</span>
-                                <span class="font-bold text-[#231915]">Techcombank (TCB)</span>
+                                <span class="font-bold text-[#231915]">VPBANK (VPB)</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-[#594436]">Chủ tài khoản:</span>
-                                <span class="font-bold text-[#231915] uppercase">PHẠM THÚY HẠNH</span>
+                                <span class="font-bold text-[#231915] uppercase">KHỔNG THỊ TRANG</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-[#594436]">Số tài khoản:</span>
                                 <span id="bride-acc-num"
-                                    class="font-mono font-extrabold text-base text-[#7b1e16]">19038475612</span>
+                                    class="font-mono font-extrabold text-base text-[#7b1e16]">209852101</span>
                             </div>
                         </div>
                     </div>
 
-                    <button onclick="copyAccount('19038475612', 'Đã sao chép STK Cô Dâu Thúy Hạnh!')"
+                    <button onclick="copyAccount('209852101', 'Đã sao chép STK Cô Dâu Trang!')"
                         class="w-full py-2.5 px-4 rounded-lg bg-[#7b1e16] hover:bg-[#5e150f] text-amber-50 text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition active:scale-95 shadow">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -980,11 +939,25 @@
 
         <!-- Footer -->
         <footer class="text-center pt-6 pb-12 border-t border-amber-200/15 text-amber-100/70">
-            <p class="font-script text-3xl text-amber-100 mb-1">Bảo Khang &amp; Thúy Hạnh</p>
-            <p class="text-xs tracking-widest uppercase">22 . 06 . 2025 • Forever &amp; Always</p>
+            <p class="font-script text-3xl text-amber-100 mb-1">Nam &amp; Trang</p>
+            <p class="text-xs tracking-widest uppercase">06 . 12 . 2026 • Forever &amp; Always</p>
         </footer>
 
     </main>
+
+    <!-- Floating RSVP button (visible after opening the invitation) -->
+    <!-- THAY LINK FORM XÁC NHẬN THAM DỰ Ở THUỘC TÍNH href BÊN DƯỚI -->
+    <a id="rsvp-float-btn" href="https://forms.gle/THAY-LINK-GOOGLE-FORM-CUA-BAN" target="_blank"
+        rel="noopener noreferrer" title="Xác nhận tham dự"
+        class="rsvp-float fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 hidden items-center gap-2 pl-3 pr-4 py-2.5 sm:py-3 rounded-full bg-[#7b1e16] hover:bg-[#5e150f] text-amber-50 shadow-2xl border border-amber-200/40 text-xs sm:text-sm font-semibold tracking-wide transition active:scale-95">
+        <span class="w-7 h-7 rounded-full bg-amber-50/15 flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12l2 2 4-4M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+            </svg>
+        </span>
+        <span>Xác nhận tham dự</span>
+    </a>
 
     <!-- Custom Toast Notification Box (No alert()) -->
     <div id="toast-box"
@@ -1004,11 +977,31 @@
         //    - URLSearchParams decodes percent-encoded UTF-8
         //      (e.g. ?name=Qu%E1%BB%B3nh -> "Quỳnh"), '+' -> space
         //    - No param -> keep default "Quý Khách & Gia Đình"
+        //    - An un-encoded "&" inside the name (?name=Anh Tuấn & Chị Quỳnh)
+        //      is kept: following pieces without "=" are glued back on,
+        //      while real params like &fbclid=... are still ignored.
         // =====================================================
+        function readGuestParam() {
+            const KEYS = ['name', 'guest', 'khach'];
+            const decode = s => {
+                try { return decodeURIComponent(s.replace(/\+/g, ' ')); } catch (e) { return s; }
+            };
+            const parts = window.location.search.replace(/^\?/, '').split('&');
+            for (const key of KEYS) {
+                const i = parts.findIndex(p => p.split('=')[0] === key);
+                if (i === -1) continue;
+                let value = decode(parts[i].slice(key.length + 1));
+                for (let j = i + 1; j < parts.length && !parts[j].includes('='); j++) {
+                    value += '&' + decode(parts[j]);
+                }
+                if (value.trim()) return value;
+            }
+            return '';
+        }
+
         (function initGuestName() {
             const DEFAULT_NAME = 'Quý Khách & Gia Đình';
-            const params = new URLSearchParams(window.location.search);
-            const raw = params.get('name') || params.get('guest') || params.get('khach') || '';
+            const raw = readGuestParam();
             // Normalize to NFC so Vietnamese diacritics render consistently,
             // collapse whitespace, and cap length to keep the layout intact.
             const name = raw.normalize('NFC').replace(/\s+/g, ' ').trim().slice(0, 60);
@@ -1024,20 +1017,20 @@
             }
         })();
 
+        // RSVP floating button: show only while the invitation is open
+        function setRsvpButtonVisible(show) {
+            const btn = document.getElementById('rsvp-float-btn');
+            btn.classList.toggle('hidden', !show);
+            btn.classList.toggle('flex', show);
+        }
+
         // =====================================================
         // 2. FADE TRANSITION: OPEN COVER -> SHOW INSIDE
         // =====================================================
-        let isMusicPlaying = false;
-        let melodyInterval = null;
-        let synth = null;
-
         function openInvitation() {
             const coverScreen = document.getElementById('cover-screen');
             const insideContent = document.getElementById('inside-content');
             const floatingControls = document.getElementById('floating-controls');
-
-            // Play gentle chime & background melody
-            startBackgroundMelody();
 
             // Fade out cover screen
             coverScreen.classList.add('fade-out');
@@ -1049,6 +1042,7 @@
                     insideContent.classList.add('fade-in');
                     floatingControls.classList.remove('hidden');
                     floatingControls.classList.add('flex');
+                    setRsvpButtonVisible(true);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 80);
             });
@@ -1062,88 +1056,12 @@
             insideContent.classList.remove('fade-in');
             floatingControls.classList.add('hidden');
             floatingControls.classList.remove('flex');
+            setRsvpButtonVisible(false);
 
             setTimeout(() => {
                 insideContent.classList.add('hidden');
                 coverScreen.classList.remove('fade-out');
             }, 450);
-        }
-
-        // =====================================================
-        // 3. TONE.JS GENTLE ROMANTIC MUSIC BOX MELODY
-        // =====================================================
-        async function startBackgroundMelody() {
-            try {
-                if (typeof Tone === 'undefined') return;
-                await Tone.start();
-
-                if (!synth) {
-                    synth = new Tone.PolySynth(Tone.Synth, {
-                        oscillator: { type: 'sine' },
-                        envelope: {
-                            attack: 0.08,
-                            decay: 0.4,
-                            sustain: 0.2,
-                            release: 1.8
-                        }
-                    }).toDestination();
-                    synth.volume.value = -14;
-                }
-
-                if (isMusicPlaying) return;
-                isMusicPlaying = true;
-                updateMusicIcon();
-
-                // Gentle Canon-inspired romantic arpeggio notes
-                const notes = [
-                    ['C4', 'E4', 'G4'],
-                    ['G3', 'B3', 'D4'],
-                    ['A3', 'C4', 'E4'],
-                    ['E3', 'G3', 'B3'],
-                    ['F3', 'A3', 'C4'],
-                    ['C3', 'E3', 'G3'],
-                    ['F3', 'A3', 'D4'],
-                    ['G3', 'B3', 'D4']
-                ];
-                let step = 0;
-
-                // Play first chord immediately
-                synth.triggerAttackRelease(notes[0], '2n');
-                step = 1;
-
-                melodyInterval = setInterval(() => {
-                    if (!isMusicPlaying) return;
-                    const chord = notes[step % notes.length];
-                    synth.triggerAttackRelease(chord, '2n');
-                    step++;
-                }, 1800);
-            } catch (e) {
-                // Ignore audio context restrictions if any
-            }
-        }
-
-        function toggleBackgroundMelody() {
-            if (isMusicPlaying) {
-                isMusicPlaying = false;
-                if (melodyInterval) clearInterval(melodyInterval);
-                updateMusicIcon();
-                showToast('Đã tạm dừng nhạc nền');
-            } else {
-                startBackgroundMelody();
-                showToast('Đã bật nhạc nền');
-            }
-        }
-
-        function updateMusicIcon() {
-            const onIcon = document.getElementById('music-icon-on');
-            const offIcon = document.getElementById('music-icon-off');
-            if (isMusicPlaying) {
-                onIcon.classList.remove('hidden');
-                offIcon.classList.add('hidden');
-            } else {
-                onIcon.classList.add('hidden');
-                offIcon.classList.remove('hidden');
-            }
         }
 
         // =====================================================
