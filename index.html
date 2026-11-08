@@ -385,10 +385,10 @@
     <div id="floating-controls" class="fixed top-4 right-4 z-50 hidden items-center gap-2">
         <button id="music-btn" onclick="toggleMusic()" title="Bật/tắt nhạc" aria-label="Bật/tắt nhạc"
             class="flex items-center justify-center w-10 h-10 rounded-full bg-[#e2d1bc]/90 hover:bg-[#e2d1bc] shadow-lg border border-amber-900/20 transition hover:scale-105 active:scale-95">
-            <svg id="music-on" class="w-5 h-5 text-[#7b1e16]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg id="music-on" class="w-5 h-5 text-[#7b1e16] hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm12-2a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <svg id="music-off" class="w-5 h-5 text-[#7b1e16] hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg id="music-off" class="w-5 h-5 text-[#7b1e16]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm12-2a3 3 0 11-6 0 3 3 0 016 0zM3 3l18 18" />
             </svg>
         </button>
@@ -1094,10 +1094,8 @@
         <span>Xác nhận tham dự</span>
     </a>
 
-    <!-- Background music player (YouTube, hidden) -->
-    <div style="position:fixed;left:-9999px;top:0;width:1px;height:1px;overflow:hidden" aria-hidden="true">
-        <div id="yt-player"></div>
-    </div>
+    <!-- Background music (starts when the guest taps "MỞ") -->
+    <audio id="bg-music" src="https://cdn.jsdelivr.net/gh/NamVV-Dev/mp3demo@main/Enchanted.mp3" loop preload="auto"></audio>
 
     <!-- Custom Toast Notification Box (No alert()) -->
     <div id="toast-box"
@@ -1157,41 +1155,21 @@
             }
         })();
 
-        // Background music (YouTube IFrame API). Starts when the guest taps "MỞ".
-        const MUSIC_VIDEO_ID = '71WlObs4Hlo';
-        const MUSIC_VOLUME = 70; // 0–100
-        let ytPlayer = null, ytReady = false, musicWanted = false, musicPlaying = false;
-
+        // Background music
+        const MUSIC_VOLUME = 0.7; // 0–1
+        const bgMusic = document.getElementById('bg-music');
+        bgMusic.volume = MUSIC_VOLUME;
         function updateMusicIcon() {
-            document.getElementById('music-on').classList.toggle('hidden', !musicPlaying);
-            document.getElementById('music-off').classList.toggle('hidden', musicPlaying);
+            const playing = !bgMusic.paused;
+            document.getElementById('music-on').classList.toggle('hidden', !playing);
+            document.getElementById('music-off').classList.toggle('hidden', playing);
         }
-        function playMusic() {
-            musicWanted = true;
-            if (ytReady) ytPlayer.playVideo();
-        }
+        bgMusic.addEventListener('play', updateMusicIcon);
+        bgMusic.addEventListener('pause', updateMusicIcon);
+        function playMusic() { bgMusic.play().catch(() => { }); }
         function toggleMusic() {
-            if (!ytReady) return;
-            if (musicPlaying) { musicWanted = false; ytPlayer.pauseVideo(); }
-            else { musicWanted = true; ytPlayer.playVideo(); }
+            if (bgMusic.paused) playMusic(); else bgMusic.pause();
         }
-        window.onYouTubeIframeAPIReady = function () {
-            ytPlayer = new YT.Player('yt-player', {
-                width: '1', height: '1', videoId: MUSIC_VIDEO_ID,
-                playerVars: { loop: 1, playlist: MUSIC_VIDEO_ID, controls: 0, playsinline: 1 },
-                events: {
-                    onReady: () => { ytReady = true; ytPlayer.setVolume(MUSIC_VOLUME); if (musicWanted) ytPlayer.playVideo(); },
-                    onStateChange: e => {
-                        musicPlaying = e.data === YT.PlayerState.PLAYING;
-                        updateMusicIcon();
-                    }
-                }
-            });
-        };
-        const ytScript = document.createElement('script');
-        ytScript.src = 'https://www.youtube.com/iframe_api';
-        document.head.appendChild(ytScript);
-        updateMusicIcon();
 
         // Album coverflow carousel (circular, arrows / dots / click side / swipe / autoplay)
         (function initCoverflow() {
