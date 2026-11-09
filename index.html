@@ -239,12 +239,21 @@
             border-radius: 4px;
         }
         /* Album coverflow carousel: --p = slot offset from center, --a = |--p| */
+        #cf-stage { --cf-h: 600px; height: var(--cf-h); }
+        @media (min-width: 640px) { #cf-stage { --cf-h: 780px; } }
+        /* Mobile: main photo fills the width; side photos stay blurred behind it and peek out of the page margins */
+        @media (max-width: 639px) {
+            #cf-stage { overflow: visible; }
+            #inside-content { overflow-x: clip; }
+            #cf-stage .cf-slide { width: 100%; }
+            #cf-prev, #cf-next { filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .9)); }
+        }
         .cf-slide {
             position: absolute;
             top: 0;
             left: 50%;
             height: 100%;
-            aspect-ratio: 2 / 3;
+            width: min(calc(var(--cf-h) * 2 / 3), 62vw);
             border-radius: 10px;
             overflow: hidden;
             cursor: pointer;
@@ -634,12 +643,12 @@
             </div>
 
             <div class="relative max-w-3xl mx-auto">
-                <div id="cf-stage" class="relative h-[300px] sm:h-[390px] overflow-hidden touch-pan-y">
-                    <div class="cf-slide"><img src="https://picsum.photos/seed/wedding1/400/600" alt="Ảnh cưới 1" draggable="false" referrerpolicy="no-referrer"></div>
-                    <div class="cf-slide"><img src="https://picsum.photos/seed/wedding2/400/600" alt="Ảnh cưới 2" draggable="false" referrerpolicy="no-referrer"></div>
-                    <div class="cf-slide"><img src="https://picsum.photos/seed/wedding3/400/600" alt="Ảnh cưới 3" draggable="false" referrerpolicy="no-referrer"></div>
-                    <div class="cf-slide"><img src="https://picsum.photos/seed/wedding4/400/600" alt="Ảnh cưới 4" draggable="false" referrerpolicy="no-referrer"></div>
-                    <div class="cf-slide"><img src="https://picsum.photos/seed/wedding5/400/600" alt="Ảnh cưới 5" draggable="false" referrerpolicy="no-referrer"></div>
+                <div id="cf-stage" class="relative overflow-hidden touch-pan-y">
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/d/1sCb8Vnls1eTTurBFfk3rt8mmEL8CI142" alt="Ảnh cưới 1" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/d/1aF1Gd_sruXNTtBeAdBv0qd0ZTPuG2K8V" alt="Ảnh cưới 2" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/d/1mIJzBIw6fTKgbAUYntAENEc8NIfTVLJY" alt="Ảnh cưới 3" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/d/1AjffmsmWYmP6jq7br3VDdl58FvExVpUD" alt="Ảnh cưới 4" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/d/1LCPlMbRFfWTeW8vDQWsB87kHdugGasWV" alt="Ảnh cưới 5" draggable="false" referrerpolicy="no-referrer"></div>
                 </div>
 
                 <button id="cf-prev" aria-label="Ảnh trước"
@@ -710,14 +719,14 @@
                         <p class="text-xs sm:text-sm font-bold text-[#2c221e] uppercase leading-relaxed mt-1.5">
                             Vũ Văn Đại<br>Phan Thị Hằng
                         </p>
-                        <p class="text-[10px] sm:text-xs text-[#594436] leading-relaxed mt-2">Thôn Yên Bài, Xã Tiến Thắng,<br>TP Hà Nội</p>
+                        <p class="text-[10px] sm:text-xs text-[#594436] leading-relaxed mt-2">Thôn Yên Bài, Xã Tiến Thắng, <span class="whitespace-nowrap">TP Hà Nội</span></p>
                     </div>
                     <div>
                         <p class="text-[11px] sm:text-xs text-[#4a372b] italic">Ông Bà</p>
                         <p class="text-xs sm:text-sm font-bold text-[#2c221e] uppercase leading-relaxed mt-1.5">
                             Khổng Văn Cải<br>Ngọ Thị Dung
                         </p>
-                        <p class="text-[10px] sm:text-xs text-[#594436] leading-relaxed mt-2">Thôn Ngọ Xá, Xã Xuân Cẩm,<br>TP Bắc Ninh</p>
+                        <p class="text-[10px] sm:text-xs text-[#594436] leading-relaxed mt-2">Thôn Ngọ Xá, Xã Xuân Cẩm, <span class="whitespace-nowrap">TP Bắc Ninh</span></p>
                     </div>
                 </div>
 
@@ -812,7 +821,7 @@
                             <span class="block font-bold uppercase text-[#2c221e] mt-0.5">Vũ Văn Đại<br>Phan Thị Hằng</span>
                         </p>
                         <p class="text-[11px] sm:text-xs text-[#2c221e] font-medium mt-1.5 mb-2.5 leading-snug">
-                            Xóm 1, Thôn Yên Bài, Xã Tiến Thắng, TP. Hà Nội
+                            Thôn Yên Bài, Xã Tiến Thắng, <span class="whitespace-nowrap">TP Hà Nội</span>
                         </p>
                         <a href="https://maps.app.goo.gl/DvFok9udYC3F36xg8"
                             target="_blank" rel="noopener noreferrer"
@@ -836,7 +845,7 @@
                             <span class="block font-bold uppercase text-[#2c221e] mt-0.5">Khổng Văn Cải<br>Ngọ Thị Dung</span>
                         </p>
                         <p class="text-[11px] sm:text-xs text-[#2c221e] font-medium mt-1.5 mb-2.5 leading-snug">
-                            Thôn Ngọ Xá, Xã Xuân Cẩm, TP Bắc Ninh
+                            Thôn Ngọ Xá, Xã Xuân Cẩm, <span class="whitespace-nowrap">TP Bắc Ninh</span>
                         </p>
                         <a href="https://maps.app.goo.gl/pEM7yyeZ5Xn4yvfw5"
                             target="_blank" rel="noopener noreferrer"
@@ -1098,7 +1107,14 @@
     </a>
 
     <!-- Background music (starts when the guest taps "MỞ") -->
-    <audio id="bg-music" src="https://cdn.jsdelivr.net/gh/NamVV-Dev/mp3demo@main/Enchanted2.mp3" loop preload="auto"></audio>
+    <audio id="bg-music" src="https://pub-9c03b49d8c2c4f8d8d20a1e8d89a0ee1.r2.dev/nhaccuoi.mp3" loop preload="auto"></audio>
+
+    <!-- Album lightbox: full image view -->
+    <div id="lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/90 p-3 sm:p-6">
+        <button id="lightbox-close" aria-label="Đóng"
+            class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center text-2xl leading-none">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain rounded shadow-2xl">
+    </div>
 
     <!-- Custom Toast Notification Box (No alert()) -->
     <div id="toast-box"
@@ -1159,7 +1175,7 @@
         })();
 
         // Background music
-        const MUSIC_VOLUME = 0.6; // 0–1
+        const MUSIC_VOLUME = 1; // 0–1
         const bgMusic = document.getElementById('bg-music');
         bgMusic.volume = MUSIC_VOLUME;
         function updateMusicIcon() {
@@ -1198,8 +1214,7 @@
                     if (p > n / 2) p -= n;
                     if (p < -n / 2) p += n;
                     s.style.setProperty('--p', p);
-                    s.style.setProperty('--a', Math.abs(p));
-                });
+                    s.style.setProperty('--a', Math.abs(p));                });
                 dots.forEach((d, i) => d.classList.toggle('active', i === active));
             }
             function go(i) { active = (i + n) % n; render(); }
@@ -1210,7 +1225,27 @@
 
             document.getElementById('cf-prev').onclick = () => { go(active - 1); restart(); };
             document.getElementById('cf-next').onclick = () => { go(active + 1); restart(); };
-            slides.forEach((s, i) => s.addEventListener('click', () => { if (i !== active) { go(i); restart(); } }));
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            function openLightbox(img) {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                clearInterval(timer);
+            }
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                restart();
+            }
+            lightbox.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeLightbox(); });
+
+            slides.forEach((s, i) => s.addEventListener('click', () => {
+                if (i === active) openLightbox(s.querySelector('img'));
+                else { go(i); restart(); }
+            }));
 
             let startX = null;
             stage.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
