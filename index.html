@@ -240,7 +240,12 @@
         }
         /* Album coverflow carousel: --p = slot offset from center, --a = |--p| */
         #cf-stage { --cf-h: 600px; height: var(--cf-h); }
-        @media (min-width: 640px) { #cf-stage { --cf-h: 780px; } }
+        /* Tablet/desktop: 5 photos visible at once. Stage height follows its width (capped at --cf-h), each photo is
+           2:3 so it is at most 44% of the stage, and the closer --cf-step spacing keeps the outer pair inside the stage */
+        @media (min-width: 640px) {
+            #cf-stage { --cf-h: 780px; --cf-step: 38%; height: auto; aspect-ratio: 100 / 66; max-height: var(--cf-h); }
+            #cf-stage .cf-slide { width: auto; aspect-ratio: 2 / 3; }
+        }
         /* Mobile: main photo fills the width; side photos stay blurred behind it and peek out of the page margins */
         @media (max-width: 639px) {
             #cf-stage { overflow: visible; }
@@ -644,11 +649,19 @@
 
             <div class="relative max-w-3xl mx-auto">
                 <div id="cf-stage" class="relative overflow-hidden touch-pan-y">
-                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczO_1-uQHQimtKJYEL3PSNfT8xsr80LNIBu3mSDG4ZK7acG6qYJJ-DoOU1bJrVtSlNzXMTBdqjVvugiuOFwc6RrmzLoI726o6fnsg4E5pqSLI1hB0TQ=w1600" alt="Ảnh cưới 1" draggable="false" referrerpolicy="no-referrer"></div>
-                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczNgRrnA35H54gjFh7O_4waw_QQY76mqo08p1m0Gjktbq9lWr_-fQ0NkYQHqq4PgHit65Hy6RJn2OB-ywJX9RU9t363LvNNw4VMzCTQulCuUzd_dq58=w1600" alt="Ảnh cưới 2" draggable="false" referrerpolicy="no-referrer"></div>
-                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIix6Y8vtyEfnD3SQbkzuHO6IS29Z0RSmk9LXoaf7f7SPvY6YWfNQLGVhE3mX0jyieqhTIMi6hU6k68qxXvtsC8aH9mfOQzMBgZj_wq5xahrFK1dY=w1600" alt="Ảnh cưới 3" draggable="false" referrerpolicy="no-referrer"></div>
-                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczP-Jm09QJ-Q0WxTQgdDv28-VgUekM2tm7wr_CcAEkF93tnIsizoVZU68g8WZJuvBN-vKcT4z31x69Sp_NuV1kgpYUlMYLBLbqJOljQQB44Af6gRoC4=w1600" alt="Ảnh cưới 4" draggable="false" referrerpolicy="no-referrer"></div>
-                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczNgcEk-MNt0vU8eysyohGUxAmmoeJ7aSBj0eKB58tZPx8kezTAUYLQT1DzKWM_wN1pN_YLe9Me7EplH5UsvheDcOAVHcGxJWYgjW6uuhDegHfQ8BUc=w1600" alt="Ảnh cưới 5" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczO_1-uQHQimtKJYEL3PSNfT8xsr80LNIBu3mSDG4ZK7acG6qYJJ-DoOU1bJrVtSlNzXMTBdqjVvugiuOFwc6RrmzLoI726o6fnsg4E5pqSLI1hB0TQ=w1200" alt="Ảnh cưới 1" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczO0MXrrLB2mScFDBF_vhtPHmD9C514yVITwM78itI6oGHjvBGWcTiOqhNGrNcSVmLU7WkpZy-E6fwreq8Ow5mSkCuNiFDsiWxTuC3V6yX_CZuNv4bo=w1200" alt="Ảnh cưới 9" draggable="false" referrerpolicy="no-referrer"></div>
+                  
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczNgRrnA35H54gjFh7O_4waw_QQY76mqo08p1m0Gjktbq9lWr_-fQ0NkYQHqq4PgHit65Hy6RJn2OB-ywJX9RU9t363LvNNw4VMzCTQulCuUzd_dq58=w1200" alt="Ảnh cưới 2" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczPCfxt6pX2lmZEX89vwAOvucsUhcQgiuoRGoJNZJGzm8SE8ZDLPiLXKLZc8IRoWfKC8TCAJFVN7ezMF1xCHXwx-WWceDKrgyDkZYpkSIFLmc2OzEqc=w1200" alt="Ảnh cưới 8" draggable="false" referrerpolicy="no-referrer"></div>
+
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIix6Y8vtyEfnD3SQbkzuHO6IS29Z0RSmk9LXoaf7f7SPvY6YWfNQLGVhE3mX0jyieqhTIMi6hU6k68qxXvtsC8aH9mfOQzMBgZj_wq5xahrFK1dY=w1200" alt="Ảnh cưới 3" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczMLnd1rGvj9qqwZYeAP5Z-ZIzpBGnsTwNruHL-EWQIhbQ3-zmu--LOol4OceSAHUetNuWB0mBKXLeUwoOAMLS1Imcr7mgRlanpdOWFtFbid4b1m4xg=w1200" alt="Ảnh cưới 7" draggable="false" referrerpolicy="no-referrer"></div>
+
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczP-Jm09QJ-Q0WxTQgdDv28-VgUekM2tm7wr_CcAEkF93tnIsizoVZU68g8WZJuvBN-vKcT4z31x69Sp_NuV1kgpYUlMYLBLbqJOljQQB44Af6gRoC4=w1200" alt="Ảnh cưới 4" draggable="false" referrerpolicy="no-referrer"></div>
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczPWJmSW6cw61VSsdRfRBkFFIrlHtlOQP1CgR_ld0JJnwwFbhNZCIVKbzrELMNBVLhfNpWsOMtCrhdlxTAVKUp1jKUyZqJrBrKlWGPC8X1xovavpH8I=w1200" alt="Ảnh cưới 6" draggable="false" referrerpolicy="no-referrer"></div>
+
+                    <div class="cf-slide"><img src="https://lh3.googleusercontent.com/pw/AP1GczNgcEk-MNt0vU8eysyohGUxAmmoeJ7aSBj0eKB58tZPx8kezTAUYLQT1DzKWM_wN1pN_YLe9Me7EplH5UsvheDcOAVHcGxJWYgjW6uuhDegHfQ8BUc=w1200" alt="Ảnh cưới 5" draggable="false" referrerpolicy="no-referrer"></div>
                 </div>
 
                 <button id="cf-prev" aria-label="Ảnh trước"
@@ -1214,7 +1227,10 @@
                     if (p > n / 2) p -= n;
                     if (p < -n / 2) p += n;
                     s.style.setProperty('--p', p);
-                    s.style.setProperty('--a', Math.abs(p));                });
+                    s.style.setProperty('--a', Math.abs(p));
+                    // Only show the centre photo and 2 on each side; hidden ones wrap around without flying across the stage
+                    s.style.visibility = Math.abs(p) > 2 ? 'hidden' : '';
+                });
                 dots.forEach((d, i) => d.classList.toggle('active', i === active));
             }
             function go(i) { active = (i + n) % n; render(); }
